@@ -12,3 +12,5 @@ clear.addEventListener("click", function() {
     localStorage.reload();
 }
 );
+
+//create a save high score area
