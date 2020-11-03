@@ -1,6 +1,7 @@
+// variable with array and objects for the questions
 var questions = [
     {
-        bigQuestion: "What year did Mario debut on the NES?",
+        bigQuestion: "What year did Super Mario Bros. debut on the NES?",
         choices: ["1983", "1984", "1985", "1986"],
         correctAnswer: "1985"
     },
@@ -10,12 +11,12 @@ var questions = [
         correctAnswer: "Jumpman"
     },
     {
-       bigQuestion: "The green-clad protagonist in The Legend of Zelda is____?",
+        bigQuestion: "The green-clad protagonist in The Legend of Zelda is____?",
         choices: ["Zelda", "Link", "Luigi", "Green Mario"],
         correctAnswer: "Link"
     },
     {
-       bigQuestion : "In Zelda, which is not part of the Triforce?",
+        bigQuestion : "In Zelda, which is not part of the Triforce?",
         choices: ["Courage", "Wisdom", "Power", "Shadow"],
         correctAnswer: "Shadow"
     },
@@ -24,5 +25,5 @@ var questions = [
         choices: ["1889", "1900", "1979", "1985"],
         correctAnswer: "1889"
     },
-]
+];
 
