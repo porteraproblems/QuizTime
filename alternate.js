@@ -39,3 +39,38 @@ var holdInterval = 0;
 var penalty = 10;
 var ulCreate = document.createElement("ul");
 
+//Event listener for timer
+timer.addEventListener("click", function () {
+    if (holdInterval === 0) {
+        holdInterval = setInterval(function () {
+            secondsLeft--;
+            currentTime.textContent = "Time remaining: " + secondsLeft;
+
+            if (secondsLeft <= 0) {
+                clearInterval(holdInterval);
+                allDone();
+                currentTime.textContent = "Too Bad!";
+            }
+        }, 1000);
+    }
+    render(questionIndex);
+});
+
+// Renders bigQuestions and ABCD to page: 
+function render(questionIndex) {
+    questionsDiv.innerHTML = "";
+    ulCreate.innerHTML = "";
+    for (var i = 0; i < questions.length; i++) {
+        var userQuestion = questions[questionIndex].bigQuestion;
+        var userABCD = questions[questionIndex].ABCD;
+        questionsDiv.textContent = userQuestion;
+    }
+    userABCD.forEach(function (newItem) {
+        var listItem = document.createElement("li");
+        listItem.textContent = newItem;
+        questionsDiv.appendChild(ulCreate);
+        ulCreate.appendChild(listItem);
+        listItem.addEventListener("click", (compare));
+    })
+}
+
