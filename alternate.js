@@ -73,4 +73,32 @@ function render(questionIndex) {
         listItem.addEventListener("click", (compare));
     })
 }
+//Q&A Selection
+function compare(event) {
+    var element = event.target;
+
+    if (element.matches("li")) {
+
+        var createDiv = document.createElement("div");
+        createDiv.setAttribute("id", "createDiv");
+        if (element.textContent == questions[questionIndex].correctAnswer) {
+            score++;
+            createDiv.textContent = "Correct! The correctAnswer is:  " + questions[questionIndex].correctAnswer;
+        } else {
+            secondsLeft = secondsLeft - penalty;
+            createDiv.textContent = "Wrong! The correct correctAnswer is:  " + questions[questionIndex].correctAnswer;
+        }
+
+    }
+    questionIndex++;
+
+    if (questionIndex >= questions.length) {
+        allDone();
+        createDiv.textContent = "Quiz is donw!" + " " + "You got  " + score + "/" + questions.length + " Correct!";
+    } else {
+        render(questionIndex);
+    }
+    questionsDiv.appendChild(createDiv);
+
+}
 
