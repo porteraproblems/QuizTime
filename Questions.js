@@ -27,3 +27,66 @@ var questions = [
     },
 ];
 
+var questionCheck = 0;
+var time = questions.length*60;
+var timer;
+var questionsId = document.getElementById("questionsDiv");
+var timeID = document.getElementById("time");
+var choicesUlId = document.getElementById("choicesUl");
+var beginId = document.getElementById("begin");
+var mainPgEl = document.getElementById("mainPage");
+var subBtn = document.getElementById("submit");
+var subPg = document.getElementById("submitScores");
+var scorePg = document.getElementById("highScores");
+
+beginId.addEventListener("click", begin);
+
+function begin() {
+
+}
+
+function time () {
+    timer = setInterval(function() {
+        var seconds = 60;
+        seconds--;
+        timeID.textContent = "Time Remaining " + seconds;
+        if(seconds <= 0) {
+            clearInterval(timeID);
+        }
+    }, 1000);
+}
+
+function startQs () {
+    var questList;
+    if(questList === questions.length) {
+        questList = 0;
+        questionsId.style.display = "block";
+        mainPgEl.style.display = "none";
+    }
+
+    else {
+        var questStore = questions[questList];
+        
+    }
+}
+console.log(startQs);
+
+
+// function begin() {
+//     timer = setInterval(startTime, 1000);
+//     timeId.textContent = time;
+//     function questionPull() {
+//         var currentQuestion = questions [questionCheck];
+//         var bigQuestionSet= document.getElementById("bigQuestion");
+//         bigQuestionSet.textContent = currentQuestion.bigQuestion;
+//         choicesUlId.innerHTML = "";
+//         currentQuestion.choices.forEach(function (choice, i) {
+//             var aBCD = document.createElement("button");
+//             aBCD.setAttribute("choicesUl", "choicesUl");
+//             aBCD.textContent = i + choice;
+//             aBCD.onclick = //need to create function when button is clicked
+//             choicesUlId.appendChild(aBCD);
+//         });
+//     };
+// }
+// begin();

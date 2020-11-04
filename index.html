@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   
+
     <link rel="stylesheet" type="text/css" href="quizstyle.css">
     <title>Quiz Time</title>
 </head>
@@ -14,19 +14,27 @@
     <div id="wrapper">
 
         <div id="time"></div>
-
-        <div id="questionsDiv">
+        <div id="mainPage">
             <h1>Quiz Time!</h1>
             <p>Answer all the questions in this quiz. For every question you get wrong, your time will drop by 10
                 seconds
             </p>
-
-            <div id="choicesUl" class="choicesUl"></div>
-
             <button id="begin">Begin!</button>
         </div>
-
-
+       
+        <div id="questionsDiv">
+            <div id="choicesUl"></div>
+        </div>
+    </div>
+   
+    <div id="submitScores">
+        <h1>High Scores</h1>
+        <input type="text">
+        <button id="submit">Submit!</button>
+    </div>
+    
+    <div id="highScores">
+        
     </div>
 
 
