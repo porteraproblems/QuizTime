@@ -2,27 +2,27 @@
 var questions = [
     {
         bigQuestion: "What year did Super Mario Bros. debut on the NES?",
-        choices: ["1983", "1984", "1985", "1986"],
+        ABCD: ["1983", "1984", "1985", "1986"],
         correctAnswer: "1985"
     },
     {
         bigQuestion: "In the original Donkey Kong arcade game, Mario was called what?",
-        choices: ["Mario", "Jumpman", "Bob", "The Plumber"],
+        ABCD: ["Mario", "Jumpman", "Bob", "The Plumber"],
         correctAnswer: "Jumpman"
     },
     {
         bigQuestion: "The green-clad protagonist in The Legend of Zelda is____?",
-        choices: ["Zelda", "Link", "Luigi", "Green Mario"],
+        ABCD: ["Zelda", "Link", "Luigi", "Green Mario"],
         correctAnswer: "Link"
     },
     {
         bigQuestion : "In Zelda, which is not part of the Triforce?",
-        choices: ["Courage", "Wisdom", "Power", "Shadow"],
+        ABCD: ["Courage", "Wisdom", "Power", "Shadow"],
         correctAnswer: "Shadow"
     },
     {
         bigQuestion: "What year did Nintendo start their company?",
-        choices: ["1889", "1900", "1979", "1985"],
+        ABCD: ["1889", "1900", "1979", "1985"],
         correctAnswer: "1889"
     },
 ];
@@ -63,11 +63,24 @@ function startQs () {
         questionsId.style.display = "block";
         mainPgEl.style.display = "none";
     }
-
     else {
         var questStore = questions[questList];
-        
+
     }
+    for (var i = 0; i < questList.length; i++) {
+        var userQuestion = questList[questionIndex].bigQuestion;
+        var userChoices = questList[questionIndex].ABCD;
+        questionsId.textContent = userQuestion;
+
+        userChoices.forEach(function (newItem) {
+            var listItem = document.createElement("li");
+            listItem.textContent = newItem;
+            questionsDiv.appendChild(ulCreate);
+            ulCreate.appendChild(listItem);
+            listItem.addEventListener("click", (compare));
+    
+    }
+
 }
 console.log(startQs);
 
