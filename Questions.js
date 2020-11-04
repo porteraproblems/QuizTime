@@ -39,13 +39,13 @@ var subBtn = document.getElementById("submit");
 var subPg = document.getElementById("submitScores");
 var scorePg = document.getElementById("highScores");
 
-beginId.addEventListener("click", begin);
+beginId.addEventListener("click", startQs);
 
 function begin() {
 
 }
 
-function time () {
+function timeInt () {
     timer = setInterval(function() {
         var seconds = 60;
         seconds--;
@@ -55,51 +55,28 @@ function time () {
         }
     }, 1000);
 }
+timeInt();
 
-function startQs () {
+function startQs() {
     var questList;
-    if(questList === questions.length) {
-        questList = 0;
-        questionsId.style.display = "block";
-        mainPgEl.style.display = "none";
+    if (questList === questions.length) {
+      questList = 0;
+      questionsId.style.display = 'block';
+      mainPgEl.style.display = 'none';
+    } else {
+      var questStore = questions[questList];
     }
-    else {
-        var questStore = questions[questList];
-
+    for (var i = 0; i < questions.length; i++) {
+      var userQuestion = questList[questionIndex].bigQuestion;
+      var userChoices = questList[questionIndex].ABCD;
+      questionsId.textContent = userQuestion;
+  
+      userChoices.forEach(function (newItem) {
+        var listItem = document.createElement('li');
+        listItem.textContent = newItem;
+        questionsDiv.appendChild(ulCreate);
+        ulCreate.appendChild(listItem);
+        listItem.addEventListener('click', compare);
+      });
     }
-    for (var i = 0; i < questList.length; i++) {
-        var userQuestion = questList[questionIndex].bigQuestion;
-        var userChoices = questList[questionIndex].ABCD;
-        questionsId.textContent = userQuestion;
-
-        userChoices.forEach(function (newItem) {
-            var listItem = document.createElement("li");
-            listItem.textContent = newItem;
-            questionsDiv.appendChild(ulCreate);
-            ulCreate.appendChild(listItem);
-            listItem.addEventListener("click", (compare));
-    
-    }
-
-}
-console.log(startQs);
-
-
-// function begin() {
-//     timer = setInterval(startTime, 1000);
-//     timeId.textContent = time;
-//     function questionPull() {
-//         var currentQuestion = questions [questionCheck];
-//         var bigQuestionSet= document.getElementById("bigQuestion");
-//         bigQuestionSet.textContent = currentQuestion.bigQuestion;
-//         choicesUlId.innerHTML = "";
-//         currentQuestion.choices.forEach(function (choice, i) {
-//             var aBCD = document.createElement("button");
-//             aBCD.setAttribute("choicesUl", "choicesUl");
-//             aBCD.textContent = i + choice;
-//             aBCD.onclick = //need to create function when button is clicked
-//             choicesUlId.appendChild(aBCD);
-//         });
-//     };
-// }
-// begin();
+  }
