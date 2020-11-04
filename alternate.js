@@ -1,51 +1,41 @@
-// declared variables
+// Var with array and object for questions 
+var questions = [
+    {
+        bigQuestion: "What year did Super Mario Bros. debut on the NES?",
+        ABCD: ["1983", "1984", "1985", "1986"],
+        correctAnswer: "1985"
+    },
+    {
+        bigQuestion: "In the original Donkey Kong arcade game, Mario was called what?",
+        ABCD: ["Mario", "Jumpman", "Bob", "The Plumber"],
+        correctAnswer: "Jumpman"
+    },
+    {
+        bigQuestion: "The green-clad protagonist in The Legend of Zelda is____?",
+        ABCD: ["Zelda", "Link", "Luigi", "Green Mario"],
+        correctAnswer: "Link"
+    },
+    {
+        bigQuestion: "In Zelda, which is not part of the Triforce?",
+        ABCD: ["Courage", "Wisdom", "Power", "Shadow"],
+        correctAnswer: "Shadow"
+    },
+    {
+        bigQuestion: "What year did Nintendo start their company?",
+        ABCD: ["1889", "1900", "1979", "1985"],
+        correctAnswer: "1889"
+    },
+];
+
+// Variables
 var score = 0;
 var questionIndex = 0;
-
-// variables for timer
 var currentTime = document.querySelector("#currentTime");
 var timer = document.querySelector("#startTime");
 var questionsDiv = document.querySelector("#questionsDiv");
 var wrapper = document.querySelector("#wrapper");
-
-var timeRemaining = 60;
+var secondsLeft = 76;
 var holdInterval = 0;
-var penalty = 5;
+var penalty = 10;
 var ulCreate = document.createElement("ul");
 
-// Function for timer
-timer.addEventListener("click", function() {
-    if (holdInterval === 0) {
-        holdInterval = setInterval(function () {
-            timeRemaining--;
-            currentTime.textContent = "Time: " + timeRemaining;
-
-            if(timeRemaining <= 0) {
-                clearInterval(holdInterval);
-                allDone();
-                currentTime.textContent = "Too bad!";
-            }
-        }, 1000);
-    }
-    render(questionIndex);
-});
-
-//Function for questions
-function render(questionIndex) {
-    questionsDiv.innerHTML = "";
-    ulCreate.innerHTML = "";
-
-    for(var i= 0; i < questions.length; i++) {
-        var userQuestion = questions[questionIndex].bigQuestion;
-        var userChoices = questions[questionIndex].choices;
-        questionsDiv.textContent = userQuestion;
-    }
-
-    userChoices.forEach(function(newItem) {
-        var listItem = document.createElement("li");
-        listItem.textContent = newItem;
-        questionsDiv.appendChild(ulCreate);
-        ulCreate.appendChild(listItem);
-        listItem.addEventListener("click", (compare));
-    })
-}
